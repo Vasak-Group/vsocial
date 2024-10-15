@@ -13,7 +13,7 @@ onMounted(() => {
   <span @click="darkModeStore.changeDarkMode()" class="hover:text-white cursor-pointer ml-1">
     <font-awesome-icon
       :icon="darkModeStore.getIcon"
-      class="p-3 bg-slate-200 dark:bg-gray-800 rounded-full ml-6"
+      class="p-3 bg-slate-200 dark:bg-gray-800 rounded-full ml-6 w-4 h-4"
     />
   </span>
 </template>
