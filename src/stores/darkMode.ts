@@ -20,10 +20,8 @@ export const useDarkModeStore = defineStore("darkMode", {
     },
     setBodyClass() {
       if (this.darkMode) {
-        console.info("Dark mode enabled");
         document.body.classList.add("dark");
       } else {
-        console.info("Dark mode disabled");
         document.body.classList.remove("dark");
       }
     }
