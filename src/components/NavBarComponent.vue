@@ -13,7 +13,7 @@ import DarkModeButton from "./buttons/DarkModeButton.vue";
 
       <RouterLink
         to="/"
-        class="px-2 py-1 mx-2 cursor-pointer hover:bg-slate-200 hover:text-white text-sm rounded-xl flex content-center items-center"
+        class="px-2 py-1 mx-2 cursor-pointer hover:bg-slate-200 dark:hover:bg-gray-800 hover:text-white text-sm rounded-xl flex content-center items-center"
       >
         <font-awesome-icon
           icon="fas fa-home"
