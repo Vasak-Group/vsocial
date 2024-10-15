@@ -1,5 +1,6 @@
-<script lang="ts">
+<script setup lang="ts">
 import { RouterLink } from "vue-router";
+import DarkModeButton from "./buttons/DarkModeButton.vue";
 </script>
 
 <template>
@@ -33,6 +34,7 @@ import { RouterLink } from "vue-router";
             class="p-3 bg-slate-200 dark:bg-gray-800 rounded-full"
           />
         </RouterLink>
+        <DarkModeButton />
       </div>
     </nav>
   </div>
