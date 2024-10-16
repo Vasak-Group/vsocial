@@ -30,28 +30,26 @@ const validPassword = computed(() => {
   );
 });
 
-const register = () => {
+const register = async () => {
   if (validEmail.value && validPassword.value) {
-    console.log("Registering...");
-    const user = {
-      name: formData.value.username,
-      email: formData.value.email,
-      password: formData.value.password,
-    };
-    VSocialConnector.POST("/user", user)
-      .then((response) => {
-        authSuccess.value = true;
-        console.trace(response);
-        formData.value.email = "";
-        formData.value.username = "";
-        formData.value.password = "";
-        formData.value.repeatPassword = "";
-      })
-      .catch((error) => {
-        authError.value = true;
-        errorTitle.value = "Error registering user";
-        errorInfo.value = error.response.data.message;
-      });
+    try {
+      const user = {
+        name: formData.value.username,
+        email: formData.value.email,
+        password: formData.value.password,
+      };
+      const response = await VSocialConnector.POST("/user", user);
+      authSuccess.value = true;
+      console.trace(response);
+      formData.value.email = "";
+      formData.value.username = "";
+      formData.value.password = "";
+      formData.value.repeatPassword = "";
+    } catch (error: any) {
+      authError.value = true;
+      errorTitle.value = "Error registering user";
+      errorInfo.value = error.response.data.message;
+    }
   } else {
     authError.value = true;
     errorTitle.value = "Error registering user";
