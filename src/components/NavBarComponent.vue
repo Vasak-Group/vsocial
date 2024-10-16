@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import DarkModeButton from "./buttons/DarkModeButton.vue";
+import { useUserSessionStore } from "@/stores/userSessionStore";
+
+const userSessionStore = useUserSessionStore();
 </script>
 
 <template>
@@ -23,18 +26,36 @@ import DarkModeButton from "./buttons/DarkModeButton.vue";
         </RouterLink>
       </div>
       <div>
-        <RouterLink to="/login" class="hover:text-white cursor-pointer ml-1">
+        <RouterLink
+          to="/login"
+          v-if="!userSessionStore.isAuth"
+          class="hover:text-white cursor-pointer ml-1"
+        >
           <font-awesome-icon
             icon="fas fa-right-to-bracket"
             class="p-3 bg-slate-200 dark:bg-gray-800 rounded-full w-4 h-4"
           />
         </RouterLink>
-        <RouterLink to="/register" class="hover:text-white cursor-pointer ml-1">
+        <RouterLink
+          to="/register"
+          v-if="!userSessionStore.isAuth"
+          class="hover:text-white cursor-pointer ml-1"
+        >
           <font-awesome-icon
             icon="fas fa-user-plus"
             class="p-3 bg-slate-200 dark:bg-gray-800 rounded-full w-4 h-4"
           />
         </RouterLink>
+        <span
+          @click="userSessionStore.logout"
+          v-if="userSessionStore.isAuth"
+          class="hover:text-white cursor-pointer ml-1"
+        >
+          <font-awesome-icon
+            icon="fas fa-right-from-bracket"
+            class="p-3 bg-slate-200 dark:bg-gray-800 rounded-full w-4 h-4"
+          />
+        </span>
         <DarkModeButton />
       </div>
     </nav>
