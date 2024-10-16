@@ -10,6 +10,10 @@ import {
   faHouse,
   faMoon,
   faSun,
+  faInfoCircle,
+  faCheckCircle,
+  faXmark,
+  faXmarkCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./style.css";
@@ -26,7 +30,11 @@ library.add(
   faGear,
   faHouse,
   faMoon,
-  faSun
+  faSun,
+  faInfoCircle,
+  faCheckCircle,
+  faXmark,
+  faXmarkCircle
 );
 
 app.component("font-awesome-icon", FontAwesomeIcon);
