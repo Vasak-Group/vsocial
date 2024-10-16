@@ -1,8 +1,37 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref } from "vue";
+import { useUserSessionStore } from "@/stores/userSessionStore";
+import VSocialConnector from "@/services/vsocial.connector";
+
+const userSessionStore = useUserSessionStore();
+const formData = ref({
+  email: "",
+  password: "",
+});
+const authError = ref(false);
+const errorTitle = ref("");
+const errorInfo = ref("");
+
+const login = async () => {
+  try {
+    const response = await VSocialConnector.POST("/auth/login", formData.value);
+    console.trace(response);
+    userSessionStore.setToken(response.access_token);
+    formData.value.email = "";
+    formData.value.password = "";
+  } catch (error: any) {
+    console.error(error);
+    authError.value = true;
+    errorTitle.value = "Error logging in";
+    errorInfo.value = error.response.message;
+  }
+};
+</script>
 
 <template>
   <form
     class="min-h-[calc(100vh-166px)] py-2 flex flex-col justify-center sm:py-4 common-text"
+    @submit.prevent="login"
   >
     <div class="relative py-1 sm:max-w-xl sm:mx-auto">
       <div
@@ -32,6 +61,7 @@
               <div class="flex flex-col">
                 <label class="leading-loose">Email</label>
                 <input
+                  v-model="formData.email"
                   type="email"
                   class="px-4 py-2 w-full sm:text-sm rounded-xl focus:outline-none"
                   placeholder="Your E-mail"
@@ -41,6 +71,7 @@
               <div class="flex flex-col">
                 <label class="leading-loose">Password</label>
                 <input
+                  v-model="formData.password"
                   type="password"
                   class="px-4 py-2 w-full sm:text-sm rounded-xl focus:outline-none"
                   placeholder="Your Password"
