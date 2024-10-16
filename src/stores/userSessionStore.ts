@@ -10,14 +10,15 @@ export const useUserSessionStore = defineStore("userSession", {
   getters: {
     isAuth(): boolean {
       return (
-        this.token !== "" || this.token !== null || this.token !== undefined
+        this.token !== "" && this.token !== null && this.token !== undefined
       );
     },
   },
   actions: {
     logout() {
-      this.token = "";
-      this.username = "";
+      console.trace("logout");
+      this.token = null;
+      this.username = null;
       localStorage.removeItem("vUserSessionToken");
       localStorage.removeItem("vUserSessionUsername");
     },
