@@ -22,7 +22,7 @@ const userSessionStore = useUserSessionStore();
             icon="fas fa-home"
             class="p-3 bg-slate-200 dark:bg-gray-800 rounded-full w-4 h-4"
           />
-          <span class="mx-1"> Home </span>
+          <span class="mx-1 hidden md:block"> Home </span>
         </RouterLink>
         <RouterLink
           v-if="userSessionStore.isAuth"
@@ -33,7 +33,7 @@ const userSessionStore = useUserSessionStore();
             icon="fas fa-home"
             class="p-3 bg-slate-200 dark:bg-gray-800 rounded-full w-4 h-4"
           />
-          <span class="mx-1"> Dashboard </span>
+          <span class="mx-1 hidden md:block"> Dashboard </span>
         </RouterLink>
       </div>
       <div>
