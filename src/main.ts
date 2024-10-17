@@ -13,7 +13,8 @@ import {
   faInfoCircle,
   faCheckCircle,
   faXmark,
-  faXmarkCircle
+  faXmarkCircle,
+  faChartLine
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./style.css";
@@ -34,7 +35,8 @@ library.add(
   faInfoCircle,
   faCheckCircle,
   faXmark,
-  faXmarkCircle
+  faXmarkCircle,
+  faChartLine
 );
 
 app.component("font-awesome-icon", FontAwesomeIcon);
