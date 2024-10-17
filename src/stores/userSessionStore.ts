@@ -1,3 +1,4 @@
+import router from "@/router";
 import { defineStore } from "pinia";
 
 export const useUserSessionStore = defineStore("userSession", {
@@ -21,6 +22,7 @@ export const useUserSessionStore = defineStore("userSession", {
       this.username = null;
       localStorage.removeItem("vUserSessionToken");
       localStorage.removeItem("vUserSessionUsername");
+      router.go(0);
     },
     setToken(token: string) {
       this.token = token;
