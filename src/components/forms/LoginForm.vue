@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useUserSessionStore } from "@/stores/userSessionStore";
 import VSocialConnector from "@/services/vsocial.connector";
+import router from "@/router";
 
 const userSessionStore = useUserSessionStore();
 const formData = ref({
@@ -19,6 +20,7 @@ const login = async () => {
     userSessionStore.setToken(response.access_token);
     formData.value.email = "";
     formData.value.password = "";
+    router.go(0);
   } catch (error: any) {
     console.error(error);
     authError.value = true;
