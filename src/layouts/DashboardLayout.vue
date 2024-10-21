@@ -6,6 +6,8 @@ import SideBarComponent from "@/components/SideBarComponent.vue";
 <template>
   <div class="flex">
     <SideBarComponent />
-    <RouterView />
+    <main>
+      <RouterView />
+    </main>
   </div>
 </template>
